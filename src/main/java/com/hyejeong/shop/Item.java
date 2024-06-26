@@ -1,17 +1,20 @@
 package com.hyejeong.shop;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.annotation.Nullable;
+import jakarta.persistence.*;
+import lombok.ToString;
 
 
 @Entity
+@ToString
 public class Item {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    String title;
-    Integer price;
+    public Long id;
+    @Column(length = 1000)
+    public String title;
+    public Integer price;
+
+
 
 
 }
