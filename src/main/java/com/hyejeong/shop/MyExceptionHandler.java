@@ -11,3 +11,5 @@ public class MyExceptionHandler {
         return ResponseEntity.status(400).body("에러발생!!!");
     }
 }
+
+
