@@ -1,4 +1,4 @@
-package com.hyejeong.shop;
+package com.hyejeong.shop.item;
 
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;

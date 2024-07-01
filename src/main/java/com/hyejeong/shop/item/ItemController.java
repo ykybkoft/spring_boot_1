@@ -1,5 +1,8 @@
-package com.hyejeong.shop;
+package com.hyejeong.shop.item;
 
+import com.hyejeong.shop.member.Member;
+import com.hyejeong.shop.member.MemberRepository;
+import com.hyejeong.shop.member.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -8,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @Controller
@@ -23,7 +25,6 @@ public class ItemController {
 
     private final ItemService is;
 
-    private final BCryptPasswordEncoder bc;
     @GetMapping("/list")
     String list(Model model){
 
@@ -105,17 +106,6 @@ public class ItemController {
         return "redirect:/list";
     }
 
-    @GetMapping("/join")
-    String join(){
-        return "join.html";
-    }
 
-    @PostMapping("/member")
-    String join1(@ModelAttribute Member member){
-
-        member.setPassword(bc.encode(member.getPassword()));
-        ms.saveMember(member);
-        return "redirect:/list";
-    }
 
 }

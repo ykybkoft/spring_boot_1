@@ -1,5 +1,7 @@
-package com.hyejeong.shop;
+package com.hyejeong.shop.item;
 
+import com.hyejeong.shop.item.Item;
+import com.hyejeong.shop.item.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
