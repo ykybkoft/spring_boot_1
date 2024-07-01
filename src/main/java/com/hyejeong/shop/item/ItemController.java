@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Controller
@@ -16,7 +17,13 @@ public class ItemController {
 
     private final ItemRepository itemRepo;
 
+    private final MemberRepository mr;
+
+    private final MemberService ms;
+
     private final ItemService is;
+
+    private final BCryptPasswordEncoder bc;
     @GetMapping("/list")
     String list(Model model){
 
@@ -33,7 +40,11 @@ public class ItemController {
         return "write.html";
     }
 
-
+//    @PostMapping("/add")
+//    String writePost(@RequestParam Map<String, Object> formData) {
+//        System.out.println(formData);
+//        return "redirect:/list";
+//    }
 
     @PostMapping("/add")
     String addPost(String title, Integer price){
@@ -94,5 +105,17 @@ public class ItemController {
         return "redirect:/list";
     }
 
+    @GetMapping("/join")
+    String join(){
+        return "join.html";
+    }
+
+    @PostMapping("/member")
+    String join1(@ModelAttribute Member member){
+
+        member.setPassword(bc.encode(member.getPassword()));
+        ms.saveMember(member);
+        return "redirect:/list";
+    }
 
 }
